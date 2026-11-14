@@ -1,0 +1,33 @@
+def todo_app():
+    tasks = []
+
+    while True:
+        print("\n--- TO-DO LIST ---")
+        print("1. View Tasks\n2. Add Task\n3. Remove Task\n4. Exit")
+        choice = input("Choose an option (1-4): ")
+
+        if choice == '1':
+            if not tasks:
+                print("Your task list is empty.")
+            else:
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")        
+        elif choice == '2':
+            task = input("Enter a new task: ")
+            tasks.append(task)
+            print("Task added!")
+        elif choice == '3':
+            num = input("Enter task number to remove: ")
+            if num.isdigit() and 1 <= int(num) <= len(tasks):
+                removed = tasks.pop(int(num) - 1)
+                print(f"Removed: {removed}")
+            else:
+                print("Invalid task number.")
+        elif choice == '4':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please pick 1-4.")
+
+if __name__ == "__main__":
+  todo_app()
