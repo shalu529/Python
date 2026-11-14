@@ -1,0 +1,29 @@
+import time
+import os
+
+def countdown_timer():
+    print("--- Countdown Timer ---")
+    try:
+        minutes = int(input("Enter minutes: "))
+        seconds = int(input("Enter seconds: "))
+        total_seconds = (minutes * 60) + seconds
+    except ValueError:
+        print("Invalid input. Setting timer for 10 seconds.")
+        total_seconds = 10
+
+    print("\nTimer starting...")
+    while total_seconds >= 0:
+        # Format seconds into MM:SS format
+        mins, secs = divmod(total_seconds, 60)
+        timer_display = f"{mins:02d}:{secs:02d}"
+
+        # \r brings the cursor to the start of the line, end="" prevents a new line
+        print(timer_display, end="\r")
+
+        time.sleep(1)
+        total_seconds -= 1
+
+    print("\nTime's up! ⏰\n")
+
+if __name__ == "__main__":
+    countdown_timer()
